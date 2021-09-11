@@ -9,9 +9,6 @@ var cookieParser = require('cookie-parser')
 router.use(cookieParser());
 
 
-router.get('/',(req,res)=>{
-    res.send("hello router")
-});
 
 
 router.post('/register',async (req,res)=>{
