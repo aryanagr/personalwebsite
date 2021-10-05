@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const Signup = () =>{
    const history=useHistory();
     const [userdata,setuserdata]=useState({
-        email:"",name:"",dob:"",mobilenumber:"",password:"",cpassword:""
+        email:"",name:"",dob:"",gender:"",mobilenumber:"",password:"",cpassword:""
     });
 
 
@@ -16,22 +16,24 @@ const Signup = () =>{
      name= e.target.name;
      value=e.target.value;
      setuserdata({...userdata,[name]:value});
+
+     
     }
 
     const postdata= async(e)=>{
         e.preventDefault();
-        const {email,name,dob,mobilenumber,password,cpassword}=userdata;
+        const {email,name,dob,gender,mobilenumber,password,cpassword}=userdata;
           const res=await fetch("/register",{
               method:"POST",
               headers:{
                   "Content-Type":"application/json"
               },
               body:JSON.stringify({
-                email,name,dob,mobilenumber,password,cpassword
+                email,name,dob,gender,mobilenumber,password,cpassword
               })
           });
           const resp=await res.json();
-          if(res.status===422|| !resp){window.alert("invalid registration"); console.log("invalid registration");}
+          if(res.status===422|| !resp){window.alert("invalid registration"); }
           else {window.alert(" registration successfull");console.log("registration successfull");history.push("/login")}
     }
 
@@ -59,7 +61,18 @@ const Signup = () =>{
                         <div className="row px-3"> <label className="mb-1">
                             <h6 className="mb-0 text-sm">DOB</h6>
                         </label> <input  className="mb-4 bg-light" type="date" name="dob" placeholder="Enter your date of birth"  onChange={inputHandler} value={userdata.dob} style={{ border:0, outline:0}}/> </div> <br/>
-
+                         
+                        <div className="row px-3"> <label className="mb-1">
+                            <h6 className="mb-0 text-sm">Gender</h6>
+                        </label>
+                         <select className="mb-4 bg-light"  value={userdata.gender} onChange={inputHandler} name="gender" style={{ border:0, outline:0}}>
+                            <option value="">plzz select your gender</option> 
+                            <option value="NA">NA</option>
+                             <option value="Male">Male</option>
+                             <option value="Female">Female</option>
+                             <option value="Other">Other</option>    
+                        </select> </div> <br/>
+                        
                         <div className="row px-3"> <label className="mb-1">
                             <h6 className="mb-0 text-sm">Phone number</h6>
                         </label> <input  className="mb-4 bg-light" type="number" name="mobilenumber" placeholder="Enter your phone number"  onChange={inputHandler} value={userdata.mobilenumber} style={{ border:0, outline:0}}/> </div> <br/>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useHistory} from 'react-router-dom';
 function Contact() {
   const history=useHistory();
-  const [contactdata,setconatctdata]=useState({email:"",name:"",mobilenumber:"",message:""});
+  const [contactdata,setconatctdata]=useState({email:"",name:"",mobilenumber:"",message:"",subject:""});
 
   const callAboutPage = async () =>{
     try{
@@ -38,17 +38,17 @@ useEffect(()=>{
 
 const contactform= async (e)=>{
 e.preventDefault();
-const{email,name,mobilenumber,message}=contactdata;
+const{email,name,mobilenumber,message,subject}=contactdata;
 const res = await fetch('./contactform',{
   method:"POST",
   headers:{
     "Content-Type":"application/json"
   },
-  body:JSON.stringify({email,name,mobilenumber,message})
+  body:JSON.stringify({email,name,mobilenumber,message,subject})
 })
 const data=await res.json();
 if(!data)alert("something got wrong message not sent");
-else {alert("message send");setconatctdata({...contactdata,message:""})}
+else {alert("message send");setconatctdata({...contactdata,message:"",subject:""})}
 }
  
   let name,value;
@@ -71,9 +71,12 @@ else {alert("message send");setconatctdata({...contactdata,message:""})}
         <input className=" w-25" type="email" placeholder="email" id="conatctemail" onChange={inputHandler}  name="email" value={contactdata.email}  style={{  border:0,outline:0}}/>
         <input className=" w-25" type="text" placeholder="phone number" id="contactnumber" onChange={inputHandler}  name="mobilenumber" value={contactdata.mobilenumber}  style={{   border:0,outline:0}}/>
           </div>
+          <div className=" w-100">
+            <input className="w-100   my-4 mb-3" id="" cols="30" rows="10" placeholder="subject" onChange={inputHandler} name="subject" value={contactdata.subject} ></input>
+          </div>
 
           <div className=" w-100">
-            <textarea className="w-100   my-5 mb-3" id="" cols="30" rows="10" placeholder="messgae..." onChange={inputHandler} name="message" value={contactdata.message} ></textarea>
+            <textarea className="w-100   my-3 mb-3" id="" cols="30" rows="10" placeholder="messgae..." onChange={inputHandler} name="message" value={contactdata.message} ></textarea>
 
 
           </div>
