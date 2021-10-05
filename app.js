@@ -13,7 +13,7 @@ app.use(require('./router/auth'));
 
 if ( process.env.NODE_ENV == "production"){
 
-    app.use(express.static("client/build"));
+    app.use(express.static("client/build/index.html"));
 
     const path = require("path");
 
@@ -26,7 +26,7 @@ if ( process.env.NODE_ENV == "production"){
 
 }
 
- const PORT=process.env.PORT||4000
+ const PORT=process.env.PORT || 4000
 
  
 
