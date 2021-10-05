@@ -15,10 +15,6 @@ dob:{
     type:String,
     required:true
 },
-gender:{
-    type:String,
-    required:true
-},
 mobilenumber:{
     type:Number,
     required:true
@@ -55,12 +51,7 @@ messages:[{
                 type:Number,
                 required:true
             },
-            
             message:{
-                type:String,
-                required:true
-            },
-            subject:{
                 type:String,
                 required:true
             }
@@ -88,9 +79,9 @@ userSchema.methods.generateAuthToken= async function (){
     }
 }
 
-userSchema.methods.addMessage = async function(email,name,mobilenumber,message,subject){
+userSchema.methods.addMessage = async function(email,name,mobilenumber,message){
     try{
-        this.messages = this.messages.concat({email,name,mobilenumber,message,subject});
+        this.messages = this.messages.concat({email,name,mobilenumber,message});
         await this.save();
         return this.messages;
     }

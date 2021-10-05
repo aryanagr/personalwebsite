@@ -73,11 +73,6 @@ useEffect(()=>{
     <div class="col-sm">{data.dob}</div>
     <div class="col-sm"></div>
   </div>
-  <div class="row mb-3">
-    <div class="col-sm">Gender</div>
-    <div class="col-sm">{data.gender}</div>
-    <div class="col-sm"></div>
-  </div>
 
 </div>
        </div>

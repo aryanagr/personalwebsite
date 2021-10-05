@@ -13,10 +13,10 @@ router.use(cookieParser());
 
 
 router.post('/register',async (req,res)=>{
-const {email,name,dob,gender,mobilenumber,password,cpassword}=req.body;
+const {email,name,dob,mobilenumber,password,cpassword}=req.body;
 
 
-if(  !email||!name||!dob||!gender||!mobilenumber||  !password|| !cpassword){
+if(  !email||!name|| !dob||!mobilenumber||  !password|| !cpassword){
     res.status(422).send({error:"plzz filled every column"});
 }
 
@@ -28,7 +28,7 @@ try{
     if(userExist)return res.status(422).send({error:"user exist"});
     else if(password!=cpassword)return res.status(422).send({error:"password not match"});
     else{
-        const user=new User({email,name,dob,gender,mobilenumber,password,cpassword});
+        const user=new User({email,name,dob,mobilenumber,password,cpassword});
 
         const userRegister=await user.save();
         
@@ -82,7 +82,7 @@ router.get('/getdata',authenticate, async(req,res)=>{
 
 })
 router.get('/signout', async(req,res)=>{
-    
+    console.log("hello signout")
     res.clearCookie('jwtoken',{path:'/'});
     res.status(200).send("user logout");
     
@@ -92,15 +92,15 @@ router.get('/signout', async(req,res)=>{
 router.post('/contactform',authenticate, async (req,res)=>{
     
     try{
-        const{email,name,mobilenumber,message,subject}=req.body;
+        const{email,name,mobilenumber,message}=req.body;
 
-        if(!name||!email||!mobilenumber||!message||!subject){
+        if(!name||!email||!mobilenumber||!message){
             return res.json({error:"plzz fill contact form"});
         }
         
         const userContact = await User.findOne({ _id: req.userID});
         if(userContact){
-            const userMessage= await userContact.addMessage(name,email,mobilenumber,message,subject)
+            const userMessage= await userContact.addMessage(name,email,mobilenumber,message)
         }
         await userContact.save();
         res.status(201).json({message:"user message send successfully"})
