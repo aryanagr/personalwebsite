@@ -36,7 +36,8 @@ const Signup = () =>{
     }
 
     return(<>
-    <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-0 mx-auto bg-light">
+
+    <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-0 mx-auto bg-light"  style={{ background: "linear-gradient( to right,#bdc3c7 , #2c3e50"}}>
     <div className="card card0 border-0">
         <div className="row d-flex">
             <div className="col-lg-6">
@@ -47,7 +48,7 @@ const Signup = () =>{
             <div className="col-lg-6">
                 <form className="card2 card border-0 px-4 py-0 pt-5" method="POST">
                     
-                    <div className="row px-3"> <label className="mb-1">
+                    <div className="row px-3 mb-2"> <label className="mb-1">
                             <h6 className="mb-0 text-sm">Email Address</h6>
                         </label> <input  className="mb-4 bg-light"  type="email" name="email" placeholder="Enter a valid email address"  onChange={inputHandler} value={userdata.email} style={{ border:0, outline:0}}/> </div>
 
@@ -81,6 +82,7 @@ const Signup = () =>{
  
     </div>
 </div>
+
     </>);
 }
 export default Signup;

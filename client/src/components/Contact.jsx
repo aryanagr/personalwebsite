@@ -60,7 +60,8 @@ else {alert("message send");setconatctdata({...contactdata,message:""})}
   }
   return (
    <>
-   <div className="bg-light container p-0 shadow mb-3 ">
+   <div style={{ background: "linear-gradient( to right,#bdc3c7 , #2c3e50"}}>
+   <div className="bg-light container p-0 shadow mb-0 " >
      <div className="row">
      <h5 className="card-title col-lg-10 offset-lg-1 my-5">Talk to us...</h5>
        <div className=" col-lg-10 offset-lg-1">
@@ -81,6 +82,7 @@ else {alert("message send");setconatctdata({...contactdata,message:""})}
        </div>
      </div>
 
+   </div>
    </div>
    </>
   );

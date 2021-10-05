@@ -8,10 +8,10 @@ function Navbar() {
 if(state){
   return (
     <>
-    <nav className="navbar navbar-expand-lg navbar-light  shadow p-3 mb-5 bg-white rounded ">
+    <nav className="navbar navbar-expand-lg navbar-light  shadow  pb-0 mb-0 bg-white rounded ">
    <div className="container-fluid">
-     <NavLink className="navbar-brand " to="/">fdgfdgfd
-         {/* <img src={logo} width="150px" alt="company logo" /> */}
+     <NavLink className="navbar-brand " to="/">
+         <img src={logo} width="150px" alt="company logo" />
      </NavLink>
      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span className="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@ if(state){
 else{
   return (
     <>
-    <nav className="navbar navbar-expand-lg navbar-light  shadow p-3 mb-5 bg-white rounded ">
+    <nav className="navbar navbar-expand-lg navbar-light  shadow p-3 mb-0 bg-white rounded ">
    <div className="container-fluid">
      <NavLink className="navbar-brand " to="/">
          <img src={logo} width="150px" alt="company logo" />
