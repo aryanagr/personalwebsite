@@ -10,9 +10,7 @@ router.use(cookieParser());
 
 
 
-router.get('/', (req,res)=>{
-    res.send("hello");
-})
+
 
 router.post('/register',async (req,res)=>{
 const {email,name,dob,gender,mobilenumber,password,cpassword}=req.body;
